@@ -2,13 +2,14 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { inject, Injectable, signal } from '@angular/core';
 import { Product } from '../_models/product';
 import { Observable, of, tap } from 'rxjs';
+import { environment } from '../../environments/environment.development';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
   private http = inject(HttpClient);
-  baseUrl = 'http://localhost:5269/api/';
+  baseUrl = environment.apiUrl;
   products = signal<Product[]>([]);
 
   getProducts(skip: number = 0, limit: number = 10): Observable<Product[]> {

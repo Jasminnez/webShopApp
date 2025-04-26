@@ -2,13 +2,14 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable, signal } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { Product } from '../_models/product';
+import { environment } from '../../environments/environment.development';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FavoritesService {
   private http = inject(HttpClient);
-  baseUrl = 'http://localhost:5269/api/';
+  baseUrl = environment.apiUrl;
   private toast = inject(ToastrService);
   products = signal<Product[]>([]);
 
@@ -26,7 +27,7 @@ export class FavoritesService {
       }
     });
   }
-  
+
   removeFromFavorites(productId: number) {
     return this.http.delete(this.baseUrl + `favorite/remove?productId=${productId}`);
   }

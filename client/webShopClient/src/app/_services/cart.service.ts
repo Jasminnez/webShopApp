@@ -2,13 +2,14 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable, signal } from '@angular/core';
 import { Product } from '../_models/product';
 import { ToastrService } from 'ngx-toastr';
+import { environment } from '../../environments/environment.development';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
   private http = inject(HttpClient);
-  baseUrl = 'http://localhost:5269/api/';
+  baseUrl = environment.apiUrl;
   products = signal<Product[]>([]);
   private toast = inject(ToastrService);
   addToCart(productId: number, quantity: number = 1) {
