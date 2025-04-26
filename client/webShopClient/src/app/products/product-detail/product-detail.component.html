@@ -1,0 +1,47 @@
+@if(product){
+    <div class="row">
+      <div class="col-4">
+        <div class="card">
+          <img
+            src="{{ product.thumbnail }}"
+            class="card-img img-thumbnail"
+          />
+    
+          <div class="card-body">
+            <div>
+              <strong>Brand:</strong>
+              <p>{{ product.brand }}</p>
+            </div>
+            <div>
+              <strong>Category:</strong>
+              <p>{{ product.category }}</p>
+            </div>
+            <div>
+              <strong>Price:</strong>
+              <p>{{ product.price }}</p>
+            </div>
+          </div>
+          <div class="card-footer">
+            <div class="btn-group d-flex">
+              <button [disabled]="!accountService.currentUser()" (click)="addToFavorite()" class="btn btn-primary">Favorites</button>
+              <button [disabled]="!accountService.currentUser()" (click)="addToCart()" class="btn btn-success">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+      </div> 
+      <div class="col-8">
+        <tabset class="product-tabset">
+            <tab heading="About {{product.title}}">
+                <h4>Description</h4>
+                <p>{{product.description}}</p>
+                <h4>Shipping</h4>
+                <p>{{product.shippingInformation}}</p>
+            </tab>   
+            <tab heading="Photos" #photoTab="tab">
+               Photo gallery
+            </tab>    
+        </tabset>
+    </div>
+    </div>
+    }
+    

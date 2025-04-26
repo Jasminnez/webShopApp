@@ -1,0 +1,25 @@
+<div class="card mb-3">
+    <div class="card-img-wrapper">
+        <img src="{{product().thumbnail }}" class="card-img-top">
+        <ul class="list-inline member-icons animate text-center">
+            <li class="list-inline-item">
+                <button routerLink="/products/{{product().id}}" class="btn btn-primary"><i class="fa fa-eye"></i></button>
+            </li>
+            <li class="list-inline-item">
+                <button  class="btn btn-primary" [disabled]="!accountService.currentUser()" (click)="addToCart()"><i class="fa fa-shopping-basket"></i></button>
+            </li>
+            <li class="list-inline-item">
+                <button class="btn btn-primary" [disabled]="!accountService.currentUser()" (click)="addToFavorite()"><i class="fa fa-heart"></i></button>
+            </li>
+        </ul>
+    </div>
+    <div class="div card-body p-1">
+        <h6 class="card-title text-center mb-1">
+             {{product().title| titlecase}}
+        </h6>
+        <p class="card-text text-muted text-center">{{product().brand | titlecase}}</p>
+        <h4 class="card-title text-center mb-1">
+             {{product().price | currency:'USD':'symbol':'1.2-2'}}
+        </h4>
+    </div>
+</div>

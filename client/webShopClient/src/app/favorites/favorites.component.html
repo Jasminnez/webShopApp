@@ -1,0 +1,7 @@
+<div class="row">
+    @for (product of favoriteService.products(); track product.id) {
+      <div class="col-2 mb-3">
+        <app-cart-product-card context="favorites" [product]="product"></app-cart-product-card>
+      </div>
+    }
+  </div>
